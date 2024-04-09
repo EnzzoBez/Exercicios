@@ -33,4 +33,27 @@ public class OrdemServico {
     public void addServico(Servicos servico) {
         servicos.add(servico);
     }
+
+    public void imprimir() {
+        System.out.println("");
+        System.out.println("          MECANICA DO TIÃO          ");
+        System.out.println("----------------------------------------");
+        System.out.println(formatar("Cliente", this.cliente.getNome()));
+        System.out.println(formatar("CPF", formatCPF(this.cliente.getCPF())));
+        System.out.println(formatar("Endereço", this.cliente.getEndereco()));
+        System.out.println(formatar("Contato", this.cliente.getContato()));
+        System.out.println("");
+        System.out.println(formatar("Veículo", this.veiculo.getDescricao()));
+        System.out.println(formatar("Placa", this.veiculo.getPlaca()));
+        System.out.println(formatar("Ano", this.veiculo.getAno()));
+        System.out.println("");
+        System.out.println("                Serviço                 ");
+        System.out.println("----------------------------------------");
+        for(int i = 0; i < this.servicos.size(); i++){
+            System.out.println(formatar(this.servicos.get(i).getDescricao(), String.valueOf(this.servicos.get(i).getValor())));
+        }
+        System.out.println("----------------------------------------");
+        System.out.println(formatar("Total", String.valueOf(this.total)));
+        System.out.println("----------------------------------------");
+    }
 }

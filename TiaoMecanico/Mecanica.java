@@ -1,45 +1,48 @@
 import java.util.Scanner;
-public class Mecanica{
-    public static void main(String[] args){
-        Scanner s = new Scanner(System.in);
+
+public class Mecanica {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        OrdemServico ordemServico = new OrdemServico();
+
         Clientes cliente = new Clientes();
-        Veiculo veiculo = new Veiculo();
-        Servicos servico = new Servicos();
-        OrdemServico OrdemServico = new OrdemServico();
-        
         System.out.println("Cliente");
         System.out.print("Nome: ");
-        cliente.setNome(s.nextLine());
+        cliente.setNome(input.nextLine());
         System.out.print("Endereço: ");
-        cliente.setEndereco(s.nextLine());
+        cliente.setEndereco(input.nextLine());
         System.out.print("CPF: ");
-        cliente.setCPF(s.nextLine());
+        cliente.setCPF(input.nextLine());
         System.out.print("Contato: ");
-        cliente.setContato(s.nextLine());
+        cliente.setContato(input.nextLine());
+        ordemServico.setCliente(cliente);
+        System.out.println("");
 
+        Veiculo veiculo = new Veiculo();
         System.out.println("Veículo");
         System.out.print("Descrição: ");
-        veiculo.setDescricao(s.nextLine());
+        veiculo.setDescricao(input.nextLine());
         System.out.print("Placa: ");
-        veiculo.setPlaca(s.nextLine());
+        veiculo.setPlaca(input.nextLine());
         System.out.print("Ano: ");
-        veiculo.setAno(s.nextLine());
+        veiculo.setAno(input.nextLine());
+        ordemServico.setVeiculo(veiculo);
+        System.out.println("");
 
-        Servicos servicos = new Servicos();
-        String continuar = "y";
-       do{
+        String continuar;
+        do {
+            Servicos servico = new Servicos();
             System.out.println("Serviço");
-            System.out.print("Valor: ");
-            servico.setValor(s.nextDouble());
-            System.out.println("Tempo:");
-            servico.setTempo(s.nextLine());
-            s.nextLine();
             System.out.print("Descrição: ");
-            servico.setDescricao(s.nextLine());
+            servico.setDescricao(input.nextLine());
+            System.out.print("Valor: ");
+            servico.setValor(Double.parseDouble(input.nextLine()));
+            ordemServico.addTotal(servico.getValor());
+            ordemServico.addServico(servico);
+            System.out.println("");
 
-            System.out.println("Deseja mais algum serviço?: ");
-            continuar = s.nextLine();
-            
-        } while (continuar.equalsIgnoreCase("y"));
-    }  
+            System.out.print("Novo serviço? ");
+            continuar = input.nextLine();
+        } 
+    }        
 }

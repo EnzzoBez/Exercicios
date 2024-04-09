@@ -1,8 +1,8 @@
 import java.time.LocalDateTime;
 public class Servicos{
     private double valor;
-    private LocalDateTime data = LocalDateTime.now();
     private String descricao;
+    private LocalDateTime data = LocalDateTime.now();
     private String tempo;
 
     public void setValor(double valor){
@@ -17,7 +17,7 @@ public class Servicos{
         return this.data;
     }
 
-    public void setDescricao(String descricao){
+    public void setDescriçao(String descricao){
         this.descricao = descricao;
     }
 
